@@ -14,3 +14,4 @@
 	5. redis 6.0.9
 	6. Apache 2.4.46
 	7. Memcached 1.6.9
+	8.需要将程序中的rabbitmq配置为自己的用户名与密码等
