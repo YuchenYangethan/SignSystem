@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2021 at 10:52 PM
--- Server version: 5.6.50-log
+-- Generation Time: 2021-01-15 01:31:34
+-- 服务器版本： 5.6.50-log
 -- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- 表的结构 `admin`
 --
 
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -38,11 +38,11 @@ CREATE TABLE IF NOT EXISTS `admin` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin`
+-- 转存表中的数据 `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `lastloginip`, `lastlogintime`, `mobile`, `realname`, `status`) VALUES
-(1, 'kaifa', '9cbf8a4dcb8e30682b927f352d6559a0', 1931205683, 1609854152, 'MTMxMTExMTExMTE=', '5byg5LiJ', 1),
+(1, 'kaifa', '9cbf8a4dcb8e30682b927f352d6559a0', 1931205683, 1610640916, 'MTMxMTExMTExMTE=', '5byg5LiJ', 1),
 (2, 'xitong', '9cbf8a4dcb8e30682b927f352d6559a0', 1931205683, 1609689826, 'MTMxMjIyMjIyMjI=', '5byg5Zub', 1),
 (3, 'huodong', '9cbf8a4dcb8e30682b927f352d6559a0', 1931205683, 1609689809, 'MTMxMzMzMzMzMzM=', '5byg5LqU', 1),
 (4, 'xuesheng', '9cbf8a4dcb8e30682b927f352d6559a0', 1931205683, 1609689869, 'MTMxNDQ0NDQ0NDQ=', '5byg5YWt', 1);
@@ -50,7 +50,7 @@ INSERT INTO `admin` (`id`, `username`, `password`, `lastloginip`, `lastlogintime
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_group`
+-- 表的结构 `admin_group`
 --
 
 CREATE TABLE IF NOT EXISTS `admin_group` (
@@ -63,19 +63,19 @@ CREATE TABLE IF NOT EXISTS `admin_group` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin_group`
+-- 转存表中的数据 `admin_group`
 --
 
 INSERT INTO `admin_group` (`id`, `name`, `description`, `rules`, `listorder`, `updatetime`) VALUES
-(1, '系统管理员', '管理宿舍楼可用状态等', '1,2,3,4,5,6,23,31', 0, 1476067479),
-(2, '活动管理员', '分配宿舍', '7,8,9,10,11,12,37,38,23,31,39', 0, 1479969527),
-(3, '学生管理员', '查询统计功能', '13,14,15,16,18,23,31,32,33,34,35,36', 0, 1479969527),
-(4, '系统开发者', '系统开发者，拥有所有的', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39', 0, 1477622552);
+(1, '系统管理员', '管理系统信息', '1,2,3,4,5,6,23,31', 0, 1476067479),
+(2, '活动管理员', '管理活动信息', '7,8,9,10,11,12,37,38,23,31,39', 0, 1479969527),
+(3, '学生管理员', '管理学生信息', '13,14,15,16,18,23,31,32,33,34,35,36', 0, 1479969527),
+(4, '系统开发者', '拥有全部权限', '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39', 0, 1477622552);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_group_access`
+-- 表的结构 `admin_group_access`
 --
 
 CREATE TABLE IF NOT EXISTS `admin_group_access` (
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `admin_group_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin_group_access`
+-- 转存表中的数据 `admin_group_access`
 --
 
 INSERT INTO `admin_group_access` (`uid`, `group_id`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `admin_group_access` (`uid`, `group_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_log`
+-- 表的结构 `admin_log`
 --
 
 CREATE TABLE IF NOT EXISTS `admin_log` (
@@ -109,10 +109,10 @@ CREATE TABLE IF NOT EXISTS `admin_log` (
   `username` varchar(20) NOT NULL,
   `ip` int(10) NOT NULL,
   `time` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=411 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=438 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin_log`
+-- 转存表中的数据 `admin_log`
 --
 
 INSERT INTO `admin_log` (`id`, `m`, `c`, `a`, `querystring`, `userid`, `username`, `ip`, `time`) VALUES
@@ -157,12 +157,39 @@ INSERT INTO `admin_log` (`id`, `m`, `c`, `a`, `querystring`, `userid`, `username
 (407, 'admin', 'Order', 'order', '', 1, 'kaifa', 1931205683, 1609854509),
 (408, 'admin', 'Item', 'redis', '', 1, 'kaifa', 1931205683, 1609854513),
 (409, 'admin', 'Item', 'redis', '', 1, 'kaifa', 1931205328, 1609893152),
-(410, 'admin', 'Order', 'order', '', 1, 'kaifa', 1931205328, 1609895213);
+(410, 'admin', 'Order', 'order', '', 1, 'kaifa', 1931205328, 1609895213),
+(411, 'admin', 'Item', 'edit', '', 1, 'kaifa', 1931205683, 1610635551),
+(412, 'admin', 'User', 'info', '', 1, 'kaifa', 1931205683, 1610640985),
+(413, 'admin', 'User', 'add', '', 1, 'kaifa', 1931205683, 1610641051),
+(414, 'admin', 'User', 'edit', '', 1, 'kaifa', 1931205683, 1610641067),
+(415, 'admin', 'User', 'del', '', 1, 'kaifa', 1931205683, 1610641079),
+(416, 'admin', 'Item', 'info', '', 1, 'kaifa', 1931205683, 1610641101),
+(417, 'admin', 'Item', 'add', '', 1, 'kaifa', 1931205683, 1610641178),
+(418, 'admin', 'Item', 'edit', '', 1, 'kaifa', 1931205683, 1610641192),
+(419, 'admin', 'Item', 'del', '', 1, 'kaifa', 1931205683, 1610641204),
+(420, 'admin', 'Item', 'redis', '', 1, 'kaifa', 1931205683, 1610641223),
+(421, 'admin', 'Order', 'list', '', 1, 'kaifa', 1931205683, 1610641332),
+(422, 'admin', 'Order', 'order', '', 1, 'kaifa', 1931205683, 1610641344),
+(423, 'admin', 'Stulist', 'info', '', 1, 'kaifa', 1931205683, 1610641428),
+(424, 'admin', 'Stulist', 'add', '', 1, 'kaifa', 1931205683, 1610641439),
+(425, 'admin', 'Stulist', 'edit', '', 1, 'kaifa', 1931205683, 1610641449),
+(426, 'admin', 'Stulist', 'del', '', 1, 'kaifa', 1931205683, 1610641460),
+(427, 'admin', 'Register', 'info', '', 1, 'kaifa', 1931205683, 1610641473),
+(428, 'admin', 'Register', 'add', '', 1, 'kaifa', 1931205683, 1610641484),
+(429, 'admin', 'Register', 'edit', '', 1, 'kaifa', 1931205683, 1610641497),
+(430, 'admin', 'Register', 'del', '', 1, 'kaifa', 1931205683, 1610641506),
+(431, 'admin', 'Set', 'password', '', 1, 'kaifa', 1931205683, 1610641519),
+(432, 'admin', 'Log', 'log', '', 1, 'kaifa', 1931205683, 1610641530),
+(433, 'admin', 'User', 'info', '', 1, 'kaifa', 1931205683, 1610645012),
+(434, 'admin', 'User', 'add', '', 1, 'kaifa', 1931205683, 1610645134),
+(435, 'admin', 'User', 'edit', '', 1, 'kaifa', 1931205683, 1610645251),
+(436, 'admin', 'User', 'del', '', 1, 'kaifa', 1931205683, 1610645345),
+(437, 'admin', 'Item', 'info', '', 1, 'kaifa', 1931205683, 1610645482);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cookie`
+-- 表的结构 `cookie`
 --
 
 CREATE TABLE IF NOT EXISTS `cookie` (
@@ -172,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `cookie` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cookie`
+-- 转存表中的数据 `cookie`
 --
 
 INSERT INTO `cookie` (`id`, `mobile`, `token`) VALUES
@@ -181,7 +208,7 @@ INSERT INTO `cookie` (`id`, `mobile`, `token`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `goods`
+-- 表的结构 `goods`
 --
 
 CREATE TABLE IF NOT EXISTS `goods` (
@@ -193,16 +220,16 @@ CREATE TABLE IF NOT EXISTS `goods` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `goods`
+-- 转存表中的数据 `goods`
 --
 
 INSERT INTO `goods` (`id`, `num`, `number`, `name`, `time`) VALUES
-(1, 4, 5, '冬奥会志愿者报名', '1609854315');
+(1, 4, 5, '冬奥会志愿者报名', '1610635632');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- 表的结构 `menu`
 --
 
 CREATE TABLE IF NOT EXISTS `menu` (
@@ -221,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu`
+-- 转存表中的数据 `menu`
 --
 
 INSERT INTO `menu` (`id`, `name`, `parentid`, `icon`, `c`, `a`, `data`, `tip`, `group`, `listorder`, `display`, `updatetime`) VALUES
@@ -271,7 +298,7 @@ INSERT INTO `menu` (`id`, `name`, `parentid`, `icon`, `c`, `a`, `data`, `tip`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- 表的结构 `orders`
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
@@ -281,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `orders`
+-- 转存表中的数据 `orders`
 --
 
 INSERT INTO `orders` (`id`, `mobile`, `goods_id`) VALUES
@@ -290,7 +317,7 @@ INSERT INTO `orders` (`id`, `mobile`, `goods_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stulist`
+-- 表的结构 `stulist`
 --
 
 CREATE TABLE IF NOT EXISTS `stulist` (
@@ -301,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `stulist` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `stulist`
+-- 转存表中的数据 `stulist`
 --
 
 INSERT INTO `stulist` (`id`, `stu_id`, `stu_name`, `enroll`) VALUES
@@ -314,7 +341,7 @@ INSERT INTO `stulist` (`id`, `stu_id`, `stu_name`, `enroll`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 表的结构 `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -326,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`user_id`, `mobile`, `password`, `username`, `studentid`) VALUES
@@ -338,7 +365,7 @@ INSERT INTO `user` (`user_id`, `mobile`, `password`, `username`, `studentid`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `www_cookie`
+-- 表的结构 `www_cookie`
 --
 
 CREATE TABLE IF NOT EXISTS `www_cookie` (
@@ -348,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `www_cookie` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `www_cookie`
+-- 转存表中的数据 `www_cookie`
 --
 
 INSERT INTO `www_cookie` (`id`, `username`, `token`) VALUES
@@ -449,7 +476,7 @@ ALTER TABLE `admin_group`
 -- AUTO_INCREMENT for table `admin_log`
 --
 ALTER TABLE `admin_log`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=411;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=438;
 --
 -- AUTO_INCREMENT for table `cookie`
 --
