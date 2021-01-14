@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>报名-用户注册</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/jquery.metadata.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script src="/static/js/base64.js"></script>
+<script src="/static/js/md5.js"></script>
+<script>
+function myFunction() {
+    document.getElementById('password').value = MD5(document.getElementById('password').value);
+    document.getElementById('passwd').value = MD5(document.getElementById('passwd').value);        
+    document.getElementById('username').value = window.btoa(document.getElementById('username').value);
+    document.getElementById('stu_name').value = window.btoa(document.getElementById('stu_name').value);
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    
+  $( "#register" ).validate({
+      rules: {
+          mobile: {
+              required: true,
+              isMobile: true
+            },
+          username: {
+              required: true,
+            },
+          stu_name: {
+             required: true,
+            },
+          stu_id: {
+             required: true,
+             digits: true,
+             rangelength:[10,10]
+            },
+          password: {
+             required: true,
+         //    range:[6,12],
+             isFormat: true
+            },
+          passwd: {
+             required: true,
+             equalTo: "#password"
+            },
+          code: {
+            required: true,
+            },
+      },
+      messages: {
+        mobile: {
+              required: "手机号不能为空",
+              isMobile: $.format("请输入正确的手机号")
+          },
+        username: {
+              required: "昵称不能为空",
+          },
+        stu_name: {
+              required: "姓名不能为空",
+            },
+        stu_id: {
+              required: "学号不能为空",
+              digits: "请输入正确格式的学号",
+              rangelength: "请输入正确格式的学号"
+            },
+        password: {
+              required: "密码不能为空",
+              isFormat: $.format("密码必须6-12位，不能为纯字母或数字")
+            },
+        passwd: {
+              required: "密码不能为空",
+              equalTo: "两次输入的密码不一致"
+            },
+        code: {
+              required: "验证码不能为空"
+          },
+      }
+  });
+  
+  jQuery.validator.addMethod("isMobile", function(value, element) {
+        var length = value.length;
+        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+        return this.optional(element) || (length == 11 && mobile.test(value));
+    }, "请正确填写手机号码");
+   
+  jQuery.validator.addMethod("isFormat", function(value, element) {
+        var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{6,12}');
+        return this.optional(element) || (pwdRegex.test(value));
+    }, "密码必须6-12位，不能为纯字母或数字");
+ 
+});
+ 
+</script>
+<body>
+    <div class="content">
+        <div class="form sign-in">
+            </br>
+            <h2>报名-用户注册</h2>
+			<form id="register" name="register" action=" " method="post" onsubmit="myFunction()">
+				{:token()}
+				<label>
+                    <span>注册手机号</span>
+                    <input id="mobile" type="text" name="mobile" />
+                </label>
+                <label>
+                    <span>昵称</span>
+                    <input id="username" type="text" name="username" />
+                </label>
+                <label>
+                    <span>姓名</span>
+                    <input id="stu_name" type="text" name="stu_name" />
+                </label>
+                <label>
+                    <span>学号</span>
+                    <input id="stu_id" type="text" name="stu_id" />
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input id="password" type="password" name="password" />
+                </label>
+                <label>
+                    <span>确认密码</span>
+                    <input id="passwd" type="password" name="passwd" />
+                </label>
+                <label>
+                    <span>验证码</span>
+                    <br/>
+                    <img class="pull-right" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?' + Math.random()" />
+                    <input id="code" type="text" name="code" />
+                </label>
+                    <input id="status" type="hidden" name="code" />
+                <button type="submit" class="submit">注册</button>
+			</form>
+				<label>
+			        <input type="button" value="点击跳转回登录页面" onclick="javascrtpt:window.location.href='http://172.81.214.81/user/index/login'" />
+                </label>
+        </div>
+    </div>
+</body>
+
+</html>

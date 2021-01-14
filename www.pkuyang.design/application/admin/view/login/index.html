@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报名管理系统后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="__STATIC__/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="__STATIC__/css/font.css">
+    <link rel="stylesheet" href="__STATIC__/css/xadmin.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+    <script src="__STATIC__/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="__STATIC__/js/xadmin.js"></script>
+    <script src="/static/js/md5.js"></script>
+</head>
+<script>
+function myFunction() {
+    document.getElementById('password').value = MD5(document.getElementById('password').value);
+   // document.getElementById('mobile').value = window.btoa(document.getElementById('password').value);
+}
+</script>
+<body>
+<div class="login-logo"><h1>报名管理系统后台</h1></div>
+<div class="login-box">
+    <form class="layui-form layui-form-pane" action="{:url('@admin/login/dologin')}" method="post" onsubmit="myFunction()">
+        {:token()}
+        <h3>登录你的帐号</h3>
+        <label class="login-title" for="username">帐号</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label login-form"><i class="iconfont">&#xe6b8;</i></label>
+            <div class="layui-input-inline login-inline">
+                <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入你的帐号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <label class="login-title" for="password">密码</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label login-form"><i class="iconfont">&#xe82b;</i></label>
+            <div class="layui-input-inline login-inline">
+                <input type="password" id="password" name="password" lay-verify="required" placeholder="请输入你的密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <label class="login-title" for="password">验证码 </label><img class="pull-right" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?' + Math.random()" />
+        <div class="layui-form-item">
+            <label class="layui-form-label login-form"><i class="iconfont">&#xe6b8;</i></label>
+            <div class="layui-input-inline login-inline">
+                <input type="text" id="code" name="code" lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+                <label class="login-title" for="remember">一周之内免登录</label>
+                <input class="input_remember" type="checkbox" name="remember" id="remember">
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">登录</button>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

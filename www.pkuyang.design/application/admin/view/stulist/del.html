@@ -1,0 +1,14 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">删除学生信息</a></legend>
+</fieldset>
+<form class="layui-form layui-form-pane" action="delstulist" method="post">
+    <label class="login-title" for="stu_id">学号</label>
+    <div class="layui-form-item">
+        <div class="layui-input-inline login-inline">
+            <input type="text" name="stu_id" lay-verify="required" placeholder="请输入学号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">删除</button>
+    </div>
+</form> 

@@ -1,0 +1,26 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">活动信息</a></legend>
+</fieldset>
+<table class="layui-table">
+    <thead>
+        <tr>
+            <th>活动id</th>
+            <th>活动名称</th>
+            <th>可参加总人数</th>
+            <th>剩余可参加人数</th>
+            <th>报名开始时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {volist name="lists" id="vo"}
+            <tr>
+                <td>{$vo.id}</td>
+                <td>{$vo.name}</td>
+                <td>{$vo.number}</td>
+                <td>{$vo.num}</td>
+                <td>{:date('Y-m-d H:i:s',$vo.time)}</td>
+            </tr>
+        {/volist} 
+    </tbody>
+</table>
+<div class="layui-box layui-laypage layui-laypage-molv">{$page}</div>

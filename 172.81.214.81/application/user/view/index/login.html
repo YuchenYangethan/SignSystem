@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>活动报名用户登录</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/jquery.metadata.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script src="/static/js/base64.js"></script>
+<script src="/static/js/md5.js"></script>
+<script>
+function myFunction() {
+    document.getElementById('password').value = MD5(document.getElementById('password').value);
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    
+  $( "#login" ).validate({
+      rules: {
+          mobile: {
+              required: true,
+              isMobile: true
+          },
+          password: {
+             required: true,
+            },
+          code: {
+            required: true,
+            },
+      },
+      messages: {
+        mobile: {
+              required: "手机号不能为空",
+              isMobile: $.format("请输入正确的手机号")
+          },
+        password: {
+              required: "密码不能为空",
+            },
+        code: {
+              required: "验证码不能为空"
+          },
+      }
+  });
+  
+  jQuery.validator.addMethod("isMobile", function(value, element) {
+        var length = value.length;
+        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+        return this.optional(element) || (length == 11 && mobile.test(value));
+    }, "请正确填写手机号码");
+ 
+});
+ 
+</script>
+
+<body>
+    <div class="content">
+        <div class="form sign-in">
+            </br>
+            <h2>活动报名用户登录</h2>
+			<form id="login" name="login" action=" " method="post" onsubmit="myFunction()">
+				{:token()}
+				 <label>
+                    <span>用户名(手机号)</span>
+                    <input id="mobile" type="text" name="mobile" />
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input id="password" type="password" name="password" />
+                </label>
+                <label>
+                    <span>验证码</span>
+                    <br/>
+                    <img class="pull-right" src="{:captcha_src()}" onclick="this.src='{:captcha_src()}?' + Math.random()" />
+                    <input id="code" type="text" name="code" />
+                </label>
+                <label>
+                    <span>一周之内免登录</span>
+                    <input id="remember" type="checkbox" name="remember">
+                </label>
+                <label>
+                <button type="submit" class="submit">登 录</button>
+                </label>
+			</form>
+			    <label>
+			        <input type="button" value="点击跳转到注册页面" onclick="javascrtpt:window.location.href='http://172.81.214.81/user/index/register'" />
+                </label>
+        </div>
+    </div>
+</body>
+</html>

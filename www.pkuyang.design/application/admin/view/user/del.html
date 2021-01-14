@@ -1,0 +1,31 @@
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/jquery.metadata.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script src="/static/js/base64.js"></script>
+<script src="/static/js/md5.js"></script>
+<script>
+function myFunction() {
+    document.getElementById('password').value = MD5(document.getElementById('password').value);
+}
+</script>
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">请填写要删除用户的信息</a></legend>
+</fieldset>
+<form class="layui-form layui-form-pane" id="pass" name="pass" action="deluser" method="post" onsubmit="myFunction()">
+    <label class="login-title" for="username">要删除的用户名</label>
+    <div class="layui-form-item">
+        <div class="layui-input-inline login-inline">
+            <input type="text" name="username" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <label class="login-title" for="password">密码</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="password" id="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <div class="form-actions">
+        <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">删除</button>
+    </div>
+</form>    

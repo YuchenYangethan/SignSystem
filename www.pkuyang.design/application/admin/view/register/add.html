@@ -1,0 +1,92 @@
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/jquery.metadata.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+<script src="/static/js/base64.js"></script>
+<script src="/static/js/md5.js"></script>
+<script>
+function myFunction() {
+    document.getElementById('password').value = MD5(document.getElementById('password').value);
+    document.getElementById('passwd').value = MD5(document.getElementById('passwd').value);
+    // document.getElementById('mobile').value = window.btoa(document.getElementById('mobile').value);
+    // document.getElementById('realname').value = window.btoa(document.getElementById('realname').value);
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $( "#pass" ).validate({
+      rules: {
+          mobile: {
+             isMobile: true
+            },
+          password: {
+             isFormat: true
+            },
+          passwd: {
+             equalTo: "#password"
+            },
+      },
+      messages: {
+        mobile: {
+              isMobile: $.format("请输入正确的手机号")
+            },
+        password: {
+              isFormat: $.format("密码必须6-12位，不能为纯字母或数字")
+            },
+        passwd: {
+              equalTo: "两次输入的密码不一致"
+            },
+      }
+  });
+  
+  jQuery.validator.addMethod("isMobile", function(value, element) {
+        var length = value.length;
+        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+        return this.optional(element) || (length == 11 && mobile.test(value));
+    }, "请正确填写手机号码");
+  jQuery.validator.addMethod("isFormat", function(value, element) {
+        var pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{6,12}');
+        return this.optional(element) || (pwdRegex.test(value));
+    }, "密码必须6-12位，不能为纯字母或数字");
+ 
+});
+</script>
+
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">添加注册信息</a></legend>
+</fieldset>
+<form class="layui-form layui-form-pane" id="pass" name="pass" action="addregister" method="post" onsubmit="myFunction()">
+    <label class="login-title" for="mobile">手机号</label>
+    <div class="layui-form-item">
+        <div class="layui-input-inline login-inline">
+            <input type="text" name="mobile" lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <label class="login-title" for="username">用户昵称</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="text" name="username" lay-verify="required" placeholder="请输入用户昵称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <label class="login-title" for="studentid">学号</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="text" name="studentid" lay-verify="required" placeholder="请输入学生学号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <label class="login-title" for="password">密码</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="password" id="password" name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <label class="login-title" for="passwd">确认密码</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="password" id="passwd" name="passwd" lay-verify="required" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div> 
+    <div class="form-actions">
+        <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">添加</button>
+    </div>
+</form> 

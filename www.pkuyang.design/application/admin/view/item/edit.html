@@ -1,0 +1,41 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">修改活动项目</a></legend>
+</fieldset>
+<form class="layui-form layui-form-pane" action="edititem" method="post">
+    <label class="login-title" for="id">请输入要修改的活动id</label>
+    <div class="layui-form-item">
+        <div class="layui-input-inline login-inline">
+            <input type="text" name="id" lay-verify="required" placeholder="请输入活动id" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">下面是修改的信息</a></legend>
+</fieldset>
+    <label class="login-title" for="name">活动名称</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="text" name="name" placeholder="请输入活动名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <label class="login-title" for="time">活动开始时间</label>（表示为“年-月-日 小时:分钟:秒”）
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="text" name="time" placeholder="请输入活动开始时间" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <label class="login-title" for="number">活动总人数</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="text" name="number" lay-verify="required" placeholder="请输入活动总人数" autocomplete="off" class="layui-input">
+            </div>
+        </div>      
+    <label class="login-title" for="num">可参加人数</label>
+        <div class="layui-form-item">
+            <div class="layui-input-inline login-inline">
+                <input type="text" name="num" placeholder="请输入可参加人数" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    <div class="form-actions">
+        <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">修改</button>
+    </div>
+</form> 

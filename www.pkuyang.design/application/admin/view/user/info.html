@@ -1,0 +1,26 @@
+<script src="/static/js/base64.js"></script>
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">用户信息</a></legend>
+</fieldset>
+<table class="layui-table">
+    <thead>
+        <tr>
+            <th>用户名</th>
+            <th>真实姓名</th>
+            <th>手机号</th>
+            <th>最近登录IP</th>
+            <th>最近登录时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {volist name="lists" id="vo"}
+            <tr>
+                <td>{$vo.username}</td>
+                <td>{$vo.realname}</td>
+                <td>{$vo.mobile}</td>
+                <td>{:long2ip($vo.lastloginip)}</td>
+                <td>{:date('Y-m-d H:i:s',$vo.lastlogintime)}</td>
+            </tr>
+        {/volist} 
+    </tbody>
+</table>

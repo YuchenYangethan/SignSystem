@@ -1,0 +1,43 @@
+<script type="text/javascript" src="/static/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/js/jquery.metadata.js"></script>
+<script type="text/javascript" src="/static/js/messages_zh.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $( "#pass" ).validate({
+      rules: {
+          mobile: {
+             isMobile: true
+            },
+      },
+      messages: {
+        mobile: {
+              isMobile: $.format("请输入正确的手机号")
+            },
+      }
+  });
+  
+  jQuery.validator.addMethod("isMobile", function(value, element) {
+        var length = value.length;
+        var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(19[0-9]{9})|(16[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+        return this.optional(element) || (length == 11 && mobile.test(value));
+    }, "请正确填写手机号码");
+ 
+});
+</script>
+
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">删除注册信息</a></legend>
+</fieldset>
+<form class="layui-form layui-form-pane" id="pass" name="pass" action="delregister" method="post">
+    <label class="login-title" for="mobile">请输入要删除用户的手机号</label>
+    <div class="layui-form-item">
+        <div class="layui-input-inline login-inline">
+            <input type="text" name="mobile" lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">删除</button>
+    </div>
+</form> 

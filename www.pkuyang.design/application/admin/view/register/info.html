@@ -1,0 +1,19 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">注册用户信息</a></legend>
+</fieldset>
+<table class="layui-table">
+    <thead>
+        <tr>
+            <th>用户名昵称</th>
+            <th>手机号</th>
+        </tr>
+    </thead>
+    <tbody>
+        {volist name="lists" id="vo"}
+            <tr>
+                <td>{$vo.username}</td>
+                <td>{$vo.mobile}</td>
+            </tr>
+        {/volist} 
+    </tbody>
+</table>

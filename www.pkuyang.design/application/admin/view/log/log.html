@@ -1,0 +1,24 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">日志信息</a></legend>
+</fieldset>
+<table class="layui-table">
+    <thead>
+        <tr>
+            <th>操作</th>
+            <th>操作者</th>
+            <th>登录IP</th>
+            <th>操作时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        {volist name="lists" id="vo"}
+            <tr>
+                <td>{$vo.c}/{$vo.a}</td>
+                <td>{$vo.username}</td>
+                <td>{:long2ip($vo.ip)}</td>
+                <td>{:date('Y-m-d H:i:s',$vo.time)}</td>
+            </tr>
+        {/volist} 
+    </tbody>
+</table>
+<div class="layui-box layui-laypage layui-laypage-molv">{$page}</div>

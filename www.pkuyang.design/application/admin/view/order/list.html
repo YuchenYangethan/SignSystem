@@ -1,0 +1,14 @@
+<fieldset class="layui-elem-field layui-field-title site-title">
+    <legend><a name="default">订单信息查询</a></legend>
+</fieldset>
+<form class="layui-form layui-form-pane" action="idlist" method="post">
+    <label class="login-title" for="id">请输入要查询的活动id</label>
+    <div class="layui-form-item">
+        <div class="layui-input-inline login-inline">
+            <input type="text" name="id" lay-verify="required" placeholder="请输入活动id" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="form-actions">
+        <button class="btn btn-warning pull-right" lay-submit lay-filter="login"  type="submit">查询</button>
+    </div>
+</form> 
